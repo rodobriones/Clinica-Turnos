@@ -93,19 +93,25 @@
   let toastTimeout;
 
   function mostrarToast(mensaje, tipo = 'exito') {
-    if (toastTimeout) clearTimeout(toastTimeout);
+  if (toastTimeout) clearTimeout(toastTimeout);
 
-    toast.textContent = mensaje;
-    toast.classList.remove('oculto', 'exito', 'error', 'mostrar');
-    toast.classList.add(tipo === 'error' ? 'error' : 'exito');
+  toast.textContent = mensaje;
 
-    void toast.offsetWidth;
-    toast.classList.add('mostrar');
+  // No ocultar por error
+  toast.classList.remove('oculto');
+  toast.classList.remove('exito', 'error', 'mostrar');
 
-    toastTimeout = setTimeout(() => {
-      toast.classList.remove('mostrar');
-    }, 2500);
-  }
+  toast.classList.add(tipo === 'error' ? 'error' : 'exito');
+
+  // Trigger animation
+  void toast.offsetWidth;
+  toast.classList.add('mostrar');
+
+  toastTimeout = setTimeout(() => {
+    toast.classList.remove('mostrar');
+  }, 20000);
+}
+
 
   function abrirModal(turnoId) {
     inputTurnoId.value = turnoId;
