@@ -2,10 +2,16 @@
   "name": "hospital-turnos-reasignacion",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": { "start": "node app.js" },
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "mysql2": "^3.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
