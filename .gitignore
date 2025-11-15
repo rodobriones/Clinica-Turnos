@@ -1,0 +1,100 @@
+# ============================
+# Node.js
+# ============================
+
+# Dependencias
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Logs
+logs
+*.log
+*.log.*
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Environment variables
+.env
+.env.*.local
+
+# Builds y cachés
+dist/
+build/
+.cache/
+.next/
+out/
+coverage/
+.tmp/
+temp/
+
+# Archivo de lock opcionales
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ============================
+# HTML / CSS / Frontend
+# ============================
+
+# Archivos generados en frontend
+*.css.map
+*.html.map
+*.map
+
+# Compiladores de CSS (si usas SASS/LESS)
+.sass-cache/
+*.css.map
+*.scssc
+*.sass-cache
+
+# ============================
+# Sistemas Operativos
+# ============================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ============================
+# Editores
+# ============================
+
+# VSCode
+.vscode/
+.history/
+*.code-workspace
+
+# JetBrains / WebStorm
+.idea/
+*.iml
+
+# Sublime
+*.sublime-workspace
+*.sublime-project
+
+# ============================
+# Otros
+# ============================
+
+# Archivos temporales
+*.tmp
+*.temp
+
+# Zip o empaquetados
+*.zip
+*.rar
+*.7z
