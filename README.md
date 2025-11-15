@@ -59,16 +59,12 @@ para evitar recalcular números y mantener el orden original de cada clínica.
 - Modal propio estilizado  
 
 ---
-
-## 📷 Capturas entregadas en el examen
-
-1. Modal de reasignación  
-2. Turno reasignado en el listado  
-3. Registro en la tabla turno_reasignacion  
-4. Vista de turnos con número por clínica  
-5. Código backend del módulo funcionando  
-
----
+## Como Iniciar el proyecto
+1. Cloncar el REPO
+2. ejecutra npm install en la carpeta
+3. correr script de bd
+4. arrancar con npm run dev
+5. ir a http://localhost:3000
 
 ## 👤 Autor
 
