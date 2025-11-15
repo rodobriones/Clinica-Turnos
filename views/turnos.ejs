@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Turnos</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Listado de Turnos</h1>
+
+<table>
+<thead>
+<tr>
+<th>ID</th><th>Paciente</th><th>Clínica</th><th>Hora</th><th></th>
+</tr>
+</thead>
+<tbody>
+<% turnos.forEach(t => { %>
+<tr>
+<td><%= t.id %></td>
+<td><%= t.paciente %></td>
+<td><%= t.clinica %></td>
+<td><%= t.fecha_hora %></td>
+<td><button class="btn-reasignar" data-id="<%= t.id %>">Reasignar</button></td>
+</tr>
+<% }) %>
+</tbody>
+</table>
+
+<div id="modal" class="oculto modal">
+  <form id="form">
+    <h2>Reasignar turno</h2>
+    <input type="hidden" id="turno_id">
+    <label>Nueva clínica:</label>
+    <select id="clinica">
+      <% clinicas.forEach(c => { %>
+        <option value="<%= c.id %>"><%= c.nombre %></option>
+      <% }) %>
+    </select>
+    <label>Motivo:</label>
+    <textarea id="motivo" required></textarea>
+    <button type="submit">Guardar</button>
+    <button type="button" id="cerrar">Cancelar</button>
+  </form>
+</div>
+
+<script>
+document.querySelectorAll('.btn-reasignar').forEach(btn=>{
+  btn.onclick=()=> {
+    document.getElementById('turno_id').value = btn.dataset.id;
+    document.getElementById('modal').classList.remove('oculto');
+  };
+});
+
+document.getElementById('cerrar').onclick=()=> {
+  document.getElementById('modal').classList.add('oculto');
+};
+
+document.getElementById('form').onsubmit = async(e)=>{
+  e.preventDefault();
+  const id = document.getElementById('turno_id').value;
+  const clinica = document.getElementById('clinica').value;
+  const motivo = document.getElementById('motivo').value;
+  const resp = await fetch(`/turnos/${id}/reasignar`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({ clinica_nueva_id:clinica, motivo })
+  });
+  const data = await resp.json();
+  if(data.ok){
+    alert('Reasignado');
+    location.reload();
+  }
+};
+</script>
+
+</body>
+</html>

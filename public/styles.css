@@ -1,0 +1,6 @@
+body{font-family:Arial;background:#f5f5f5;padding:20px;}
+table{width:100%;border-collapse:collapse;background:#fff;}
+td,th{border:1px solid #ddd;padding:8px;}
+.btn-reasignar{background:#2196F3;color:white;padding:6px;border:none;cursor:pointer;}
+.modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:8px;}
+.oculto{display:none;}
