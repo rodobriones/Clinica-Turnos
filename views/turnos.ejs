@@ -11,21 +11,30 @@
 <table>
 <thead>
 <tr>
-<th>ID</th><th>Paciente</th><th>Clínica</th><th>Hora</th><th></th>
+  <th>Turno</th>
+  <th>Paciente</th>
+  <th>Clínica</th>
+  <th>Hora</th>
+  <th></th>
 </tr>
 </thead>
 <tbody>
 <% turnos.forEach(t => { %>
 <tr>
-<td><%= t.id %></td>
-<td><%= t.paciente %></td>
-<td><%= t.clinica %></td>
-<td><%= t.fecha_hora %></td>
-<td><button class="btn-reasignar" data-id="<%= t.id %>">Reasignar</button></td>
+  <td><%= t.numero_turno_clinica %></td>   <!-- Turno por clínica -->
+  <td><%= t.paciente %></td>
+  <td><%= t.clinica %></td>
+  <td><%= t.fecha_hora %></td>
+  <td>
+    <button class="btn-reasignar" data-id="<%= t.id %>">
+      Reasignar
+    </button>
+  </td>
 </tr>
 <% }) %>
 </tbody>
 </table>
+
 
 <div id="modal" class="oculto modal">
   <form id="form">

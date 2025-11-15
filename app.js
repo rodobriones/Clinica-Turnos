@@ -20,13 +20,23 @@ app.get('/', (req, res) => {
 app.get('/turnos', async (req, res) => {
   try {
     const [turnos] = await db.query(
-      `SELECT t.id, p.nombre AS paciente, c.nombre AS clinica,
-      DATE_FORMAT(t.fecha_hora, '%Y-%m-%d %H:%i') AS fecha_hora
-      FROM turno t
-      JOIN paciente p ON t.paciente_id = p.id
-      JOIN clinica c ON t.clinica_id = c.id
-      ORDER BY t.fecha_hora;`
-    );
+  `SELECT 
+      t.id,                                   
+      p.nombre AS paciente,
+      c.nombre AS clinica,
+      DATE_FORMAT(t.fecha_hora, '%Y-%m-%d %H:%i') AS fecha_hora,
+      (
+        SELECT COUNT(*) 
+        FROM turno t2
+        WHERE t2.clinica_id = t.clinica_id
+          AND t2.fecha_hora <= t.fecha_hora
+      ) AS numero_turno_clinica            
+   FROM turno t
+   JOIN paciente p ON t.paciente_id = p.id
+   JOIN clinica c  ON t.clinica_id  = c.id
+   ORDER BY c.nombre, t.fecha_hora;`
+);
+
 
     const [clinicas] = await db.query(
       `SELECT id, nombre FROM clinica ORDER BY nombre;`
